@@ -1,5 +1,5 @@
 cmake_minimum_required(VERSION 2.8.10)
-project(pdclib C CXX ASM)
+project(pdclib C)
 
 # Most of this was lifted from BigCheese's nucleo-toolchain
 
@@ -10,8 +10,6 @@ project(pdclib C CXX ASM)
 #  set(TEENSY3_FLAGS "${TEENSY3_TARGET} -mcpu=cortex-m4 -mthumb -D__MK20DX128__")
 #  set(COMMON_FLAGS "-ffunction-sections -fdata-sections -fcolor-diagnostics -fno-exceptions ${TEENSY3_FLAGS}")
 #  set(CMAKE_C_FLAGS "-std=c11 ${COMMON_FLAGS} ${CMAKE_C_FLAGS}")
-#  set(CMAKE_CXX_FLAGS "-std=c++11 ${COMMON_FLAGS} ${CMAKE_CXX_FLAGS}")
-#  set(CMAKE_ASM_FLAGS "${COMMON_FLAGS} ${CMAKE_ASM_FLAGS}")
 #  set(CMAKE_SIZEOF_VOID_P 4)
 #endif()
 
