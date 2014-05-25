@@ -3,28 +3,29 @@ project(pdclib C CXX ASM)
 
 # Most of this was lifted from BigCheese's nucleo-toolchain
 
-if (NOT CMAKE_C_FLAGS)
-  set(TEENSY3_TRIPLE "-target arm-none-eabi")
-  set(TEENSY3_FLAGS "-D__MK20DX128__ ${TEENSY3_TARGET}")
-  set(COMMON_FLAGS "-mcpu=cortex-m4 -mthumb -ffunction-sections -fdata-sections -fcolor-diagnostics -fno-exceptions ${TEENSY3_FLAGS}")
-  set(CMAKE_C_FLAGS "-std=c11 ${COMMON_FLAGS} ${CMAKE_C_FLAGS}")
-  set(CMAKE_CXX_FLAGS "-std=c++11 ${COMMON_FLAGS} ${CMAKE_CXX_FLAGS}")
-  set(CMAKE_ASM_FLAGS "${COMMON_FLAGS} ${CMAKE_ASM_FLAGS}")
-  set(CMAKE_SIZEOF_VOID_P 4)
-endif()
-
+# Example flags that should allow us to compile pdclib for the teensy3
+#if (NOT CMAKE_C_FLAGS)
+#  message("* Setting up default CFLAGS for the pdclib (teensy3 target)")
+#  set(TEENSY3_TARGET "--target=arm-none-eabi")
+#  set(TEENSY3_FLAGS "${TEENSY3_TARGET} -mcpu=cortex-m4 -mthumb -D__MK20DX128__")
+#  set(COMMON_FLAGS "-ffunction-sections -fdata-sections -fcolor-diagnostics -fno-exceptions ${TEENSY3_FLAGS}")
+#  set(CMAKE_C_FLAGS "-std=c11 ${COMMON_FLAGS} ${CMAKE_C_FLAGS}")
+#  set(CMAKE_CXX_FLAGS "-std=c++11 ${COMMON_FLAGS} ${CMAKE_CXX_FLAGS}")
+#  set(CMAKE_ASM_FLAGS "${COMMON_FLAGS} ${CMAKE_ASM_FLAGS}")
+#  set(CMAKE_SIZEOF_VOID_P 4)
+#endif()
 
 # platform-specific includes and sources
-include_directories(platforms/example/includes platform/example/internals)
+include_directories(SYSTEM platform/example/includes platform/example/internals)
 
 include_directories(internals)
 include_directories(includes)
 include_directories(opt/nothread)
 include_directories(opt/tss_errno)
 
-add_definitions(-fno-builtin)
+add_definitions(-fno-builtin -nostdinc)
 
-set(PLATFORM_SRCS 
+set(PLATFORM_SRCS
   platform/example/functions/_PDCLIB/_PDCLIB_Exit.c
   platform/example/functions/_PDCLIB/_PDCLIB_fileops.c
   platform/example/functions/_PDCLIB/_PDCLIB_open.c
