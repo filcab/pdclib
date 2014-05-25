@@ -263,3 +263,46 @@ add_library(pdc
   functions/_PDCLIB/_PDCLIB_strtox_main.c
   functions/_PDCLIB/_PDCLIB_strtox_prelim.c
   )
+
+install(TARGETS pdc
+  ARCHIVE DESTINATION lib)
+install(FILES
+  includes/assert.h
+  includes/ctype.h
+  includes/float.h
+  includes/inttypes.h
+  includes/iso646.h
+  includes/limits.h
+  includes/locale.h
+  includes/stdarg.h
+  includes/stdbool.h
+  includes/stddef.h
+  includes/stdint.h
+  includes/stdio.h
+  includes/stdlib.h
+  includes/stdnoreturn.h
+  includes/string.h
+  includes/threads.h
+  includes/time.h
+  includes/uchar.h
+  includes/wchar.h
+  includes/wctype.h
+
+  internals/_PDCLIB_aux.h
+  internals/_PDCLIB_encoding.h
+  internals/_PDCLIB_float.h
+  internals/_PDCLIB_glue.h
+  internals/_PDCLIB_int.h
+  internals/_PDCLIB_io.h
+  internals/_PDCLIB_locale.h
+
+  opt/nothread/_PDCLIB_threadconfig.h
+  opt/tss_errno/errno.h
+
+  platform/example/includes/signal.h
+  platform/example/internals/_PDCLIB_config.h
+
+  #opt/c_locale/_PDCLIB_clocale.h
+  #opt/dlmalloc/dlmalloc.h
+  #opt/pthreads/_PDCLIB_threadconfig.h
+  DESTINATION include)
