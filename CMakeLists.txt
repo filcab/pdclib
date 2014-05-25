@@ -42,7 +42,6 @@ set(PLATFORM_SRCS
   platform/example/functions/stdlib/system.c
   )
 
-
 add_library(pdc
   ${PLATFORM_SRCS}
 
